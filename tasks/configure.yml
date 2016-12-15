@@ -1,0 +1,47 @@
+---
+- name: copy configserver configuration
+  template: src=templates/csf.conf.j2
+            dest=/etc/csf/csf.conf
+            owner=root
+            group=root
+            mode=0600
+  notify:
+  - restart csf
+  - restart lfd
+
+
+- name: copy configserver allow configuration
+  template: src=templates/csf.allow.j2
+            dest=/etc/csf/csf.allow
+            owner=root
+            group=root
+            mode=0600
+  notify:
+  - restart csf
+  - restart lfd
+
+
+- name: copy configserver ignore configuration
+  template: src=templates/csf.ignore.j2
+            dest=/etc/csf/csf.ignore
+            owner=root
+            group=root
+            mode=0600
+  notify:
+  - restart csf
+  - restart lfd
+
+
+- name: copy configserver pignore configuration
+  template: src=templates/csf.pignore.j2
+            dest=/etc/csf/csf.pignore
+            owner=root
+            group=root
+            mode=0600
+  notify:
+  - restart csf
+  - restart lfd
+
+
+- name: apply the configuration changes
+  shell: csf -r

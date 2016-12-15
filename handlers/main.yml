@@ -1,0 +1,18 @@
+---
+- name: restart csf
+  service: name=csf state=restarted
+
+- name: start csf
+  service: name=csf state=started
+
+- name: stopped csf
+  service: name=csf state=stopped
+
+- name: restart lfd
+  service: name=lfd state=restarted
+
+- name: start lfd
+  service: name=lfd state=started
+
+- name: stopped lfd
+  service: name=lfd state=stopped

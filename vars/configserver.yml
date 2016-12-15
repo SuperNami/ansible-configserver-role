@@ -1,0 +1,50 @@
+---
+## Configuring service
+#
+# 1 = on
+# 0 = off
+#
+testing: "0"
+
+## Ips
+#
+home_ip: 192.168.1.*
+server_ip: 192.168.1.*
+development_ip: 192.168.1.*
+
+## Location of systemctl
+#
+systemctl_location: /bin/systemctl
+
+### Ports and their use
+#
+## TCP ports
+#
+# 22 = SSH
+# 53 = DNS
+# 80 = HTTP
+# 443 = SSL
+# 514 = Syslog
+# 3306 = MySQL
+# 11371 = Repository keyserver
+#
+#
+## UDP ports
+#
+# 53 = DNS
+# 123 =  NTP
+#
+
+## Ipv4 ports
+#
+tcp4_in: 22,53,80,443,514,3306,11371
+tcp4_out: 22,53,80,113,443,514,3306,11371
+udp4_in: 53,123
+udp4_out: 53,123
+
+## Ipv6 ports
+#
+tcp6_in: 22,53,80,443,514,3306,11371
+tcp6_out: 22,53,80,113,443,514,3306,11371
+udp6_in: 53,123
+udp6_out: 53,123

@@ -1,0 +1,30 @@
+---
+- name: create configserver download folder
+  file: path={{ item }}
+        state=directory
+        recurse=yes
+        owner={{ user }}
+        group={{ user }}
+        mode=0755
+
+  with_items:
+  - "{{ configserver_download }}"
+
+
+- name: download configserver archive
+  get_url: url=https://download.configserver.com/csf.tgz
+           dest={{ configserver_download }}csf.tgz
+
+
+- name: unpack configserver archive
+  command: tar -xzf csf.tgz chdir={{ configserver_download }} creates={{ configserver_download }}csf
+
+
+- name: install configserver
+  command: sh install.sh chdir={{ configserver_download }}csf creates=/etc/csf/csf.conf
+
+
+- name: install perl libwww dependency
+  apt: pkg=libwww-perl
+       state=latest
+       update_cache=yes

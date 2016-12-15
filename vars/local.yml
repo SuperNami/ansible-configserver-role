@@ -1,0 +1,5 @@
+---
+#user: ubuntu
+#user: vagrant
+user: user
+configserver_download: "/opt/downloads/configserver/"

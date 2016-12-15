@@ -1,0 +1,12 @@
+---
+- name: configserver
+  hosts: all
+  user: root
+  become: true
+  roles:
+  - configserver
+  handlers:
+  - include: handlers/main.yml
+  vars_files:
+  - vars/local.yml
+  - vars/configserver.yml
